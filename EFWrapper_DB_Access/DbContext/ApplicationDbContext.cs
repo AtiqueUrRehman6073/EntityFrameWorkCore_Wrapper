@@ -1,6 +1,7 @@
 ﻿using EFWrapper_Utilities;
 using EntityFrameWorkCore_Wrapper.Context;
 using EntityFrameWorkCore_Wrapper.Models;
+using ERWrapper_Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -24,15 +25,29 @@ namespace EFWrapper_Data_Access.DbContext
             _connections = new Connections();
             _connections.ConnectionString = _config.GetConnectionString("ConnectionString");
         }
+        public async Task<string> UserAuth(UserModel obj)
+        {
+            try
+            {
+                var responseCheck = await _demoContext.Patients.AsNoTracking().Where(a=>(a.PatientAccount == obj.Id && a.City == obj.Password)).ToArrayAsync();
+                if (responseCheck.Length == 0 || responseCheck.Count() == 0)
+                {
+                    return "Empty";
+                }
+                return JsonConvert.SerializeObject(responseCheck,Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
         public async Task<string> GetAll()
         {
             try
             {
                 List<Patient> list = new List<Patient>();
-                //var response = _demoContext.Patients.FirstOrDefaultAsync().Result;
-                //var response2 = _demoContext.Patients.AsAsyncEnumerable<Patient>();
-                //var responseList = _demoContext.Patients.AsEnumerable().Take(2).ToList();
-                var responseList = await _demoContext.Patients.FromSqlInterpolated($@"SELECT top(10) * FROM Patient").AsNoTracking().ToListAsync();
+                var responseList = await _demoContext.Patients.FromSqlInterpolated($@"SELECT top(3000) * FROM Patient").AsNoTracking().ToListAsync();
                 await _demoContext.DisposeAsync();
                 return JsonConvert.SerializeObject(responseList, Formatting.Indented);
             }

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFWrapper_Data_Access.DbContext
+namespace ERWrapper_Repositroy.DemoDateRepo.Interfaces
 {
-    public interface IApplicationDbContext
+    public interface IDataAuthRepo
     {
-        public Task<string> GetAll();
         public Task<string> UserAuth(UserModel obj);
     }
 }

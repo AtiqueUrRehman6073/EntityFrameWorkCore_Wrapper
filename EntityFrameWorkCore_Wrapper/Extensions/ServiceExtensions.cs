@@ -24,9 +24,15 @@ namespace EntityFrameWorkCore_Wrapper.Extensions
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-            services.AddScoped<IDemoDataRepo, DemoDataRepo>();
-            services.AddScoped<IDemoData, DemoData>();
+            
             services.AddScoped<IGetDataService, GetDataService>();
+            services.AddScoped<IDemoData, DemoData>();
+            services.AddScoped<IDemoDataRepo, DemoDataRepo>();
+
+            services.AddScoped<IUserAuthService, UserAuthService>();
+            services.AddScoped<IUserAuth, UserAuth>();
+            services.AddScoped<IDataAuthRepo, DataAuthRepo>();
+
         }
         public static void ConfigureSettings(this IServiceCollection services, IConfiguration configuration)
         {
