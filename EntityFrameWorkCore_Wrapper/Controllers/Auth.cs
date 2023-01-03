@@ -1,5 +1,6 @@
 ﻿using EFWrapper_Engine.Resources.Interfaces;
 using ERWrapper_Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         {
             return await _userAuth.Authorize(obj);
         }
+        [Authorize]
         [HttpPost,Route("login")]
         public async Task<string> Login(UserModel obj)
         {

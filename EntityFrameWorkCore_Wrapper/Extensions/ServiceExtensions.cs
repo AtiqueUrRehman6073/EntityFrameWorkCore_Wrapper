@@ -33,6 +33,8 @@ namespace EntityFrameWorkCore_Wrapper.Extensions
             services.AddScoped<IUserAuth, UserAuth>();
             services.AddScoped<IDataAuthRepo, DataAuthRepo>();
 
+            services.AddScoped<IJWTService, JWTService>();
+
         }
         public static void ConfigureSettings(this IServiceCollection services, IConfiguration configuration)
         {

@@ -1,4 +1,5 @@
 ﻿using EFWrapper_Engine.Resources.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         {
             _data = data;
         }
+        [Authorize]
         [HttpGet,Route("GetData")]
         public async Task<string> GetData()
         {

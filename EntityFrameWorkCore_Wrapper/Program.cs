@@ -26,9 +26,11 @@ builder.Services.AddSwaggerGen(c =>
         Title = "EntityFrameWorkCore_Wrapper",
         Version = "v1"
     });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         In = ParameterLocation.Header,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
         Description = "Please insert JWT with Bearer into field",
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey
@@ -49,6 +51,26 @@ builder.Services.AddSwaggerGen(c =>
 });
 ////////     Configure Authentication Pipeline    /////////
 builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}
+).AddJwtBearer(options =>
+{
+    //x.ClaimsIssuer = builder.Configuration["Jwt:Issuer"];
+    options.Audience = builder.Configuration["Jwt:Audience"];
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,//builder.Configuration["Jwt:Audience"]
+        ValidateLifetime = false,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 builder.Services.ConfigureServices();
 builder.Services.ConfigureSettings(builder.Configuration);
 var app = builder.Build();

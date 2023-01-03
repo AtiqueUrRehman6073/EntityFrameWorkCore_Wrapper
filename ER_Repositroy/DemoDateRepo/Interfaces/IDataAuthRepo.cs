@@ -9,6 +9,7 @@ namespace ERWrapper_Repositroy.DemoDateRepo.Interfaces
 {
     public interface IDataAuthRepo
     {
+        public Task<string> UserSignup(UserModel obj);
         public Task<string> UserAuth(UserModel obj);
     }
 }

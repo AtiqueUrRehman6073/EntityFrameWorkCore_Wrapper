@@ -23,11 +23,7 @@ namespace EFWrapper_Engine.Warehouse.Implementations
         {
             try
             {
-                var dbReponse = await _dataAuthRepo.UserAuth(obj);
-                if (dbReponse != "Empty")
-                {
-                    return "Account already Exists! Please try another UserName or Password!";
-                }
+                var dbReponse = await _dataAuthRepo.UserSignup(obj);
                 return dbReponse;
                 //return tokenHandler.WriteToken(token);
             }
