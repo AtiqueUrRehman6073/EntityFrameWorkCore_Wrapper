@@ -9,6 +9,7 @@ namespace EFWrapper_Engine.Resources.Interfaces
 {
     public interface IUserAuth
     {
+        public Task<string> Signup(UserModel obj);
         public Task<string> Authorize(UserModel obj);
         public Task<string> Authenticate(UserModel obj);
     }

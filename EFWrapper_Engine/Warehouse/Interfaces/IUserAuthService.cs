@@ -10,6 +10,7 @@ namespace EFWrapper_Engine.Warehouse.Interfaces
 {
     public interface IUserAuthService
     {
+        public Task<string> UserSignup(UserModel obj);
         public Task<string> AuthorizeUser(UserModel obj);
         public Task<string> AuthenticateUser(UserModel obj);
     }

@@ -19,6 +19,20 @@ namespace EFWrapper_Engine.Warehouse.Implementations
 		{
 			_dataAuthRepo = dataAuthRepo;
 		}
+        public async Task<string> UserSignup(UserModel obj)
+        {
+            try
+            {
+                var dbReponse = await _dataAuthRepo.UserSignup(obj);
+                return dbReponse;
+                //return tokenHandler.WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
         public async Task<string> AuthorizeUser(UserModel obj)
         {
             try

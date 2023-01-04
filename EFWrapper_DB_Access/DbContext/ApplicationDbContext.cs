@@ -25,16 +25,34 @@ namespace EFWrapper_Data_Access.DbContext
             _connections = new Connections();
             _connections.ConnectionString = _config.GetConnectionString("ConnectionString");
         }
+        public async Task<string> UserSignup(UserModel obj)
+        {
+            try
+            {
+                var responseCheck = await _demoContext.Patients.AsNoTracking().Where(a => (a.PatientAccount == obj.Id && a.City == obj.Password)).ToArrayAsync();
+                if (responseCheck.Length == 0 || responseCheck.Count() == 0)
+                {
+                    ///// Perform Insertion Here . . . 
+                    return JsonConvert.SerializeObject(obj, Formatting.Indented);
+                }
+                return JsonConvert.SerializeObject("UserName or email exists already . . .", Formatting.Indented);   
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
         public async Task<string> UserAuth(UserModel obj)
         {
             try
             {
-                var responseCheck = await _demoContext.Patients.AsNoTracking().Where(a=>(a.PatientAccount == obj.Id && a.City == obj.Password)).ToArrayAsync();
+                var responseCheck = await _demoContext.Patients.AsNoTracking().Where(a => (a.PatientAccount == obj.Id && a.City == obj.Password)).ToArrayAsync();
                 if (responseCheck.Length == 0 || responseCheck.Count() == 0)
                 {
                     return "Empty";
                 }
-                return JsonConvert.SerializeObject(responseCheck,Formatting.Indented);
+                return JsonConvert.SerializeObject(responseCheck, Formatting.Indented);
             }
             catch (Exception ex)
             {

@@ -15,6 +15,11 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         {
             _userAuth = userAuth;
         }
+        [HttpPost, Route("signup")]
+        public async Task<string> Signup(UserModel obj)
+        {
+            return await _userAuth.Signup(obj);
+        }
         [HttpPost, Route("authorize")]
         public async Task<string> Authorize(UserModel obj)
         {

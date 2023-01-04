@@ -24,6 +24,19 @@ namespace ERWrapper_Repositroy.DemoDateRepo.Implementation
 		{
 			try
 			{
+				var dbResponse = await _context.UserSignup(obj);
+                return dbResponse;
+			}
+			catch (Exception ex)
+			{
+				return ex.Message;
+				throw;
+			}
+		}
+		public async Task<string> UserAuthorization(UserModel obj)
+		{
+			try
+			{
 				var dbResponse = await _context.UserAuth(obj);
                 if (dbResponse != "Empty")
                 {

@@ -16,6 +16,18 @@ namespace EFWrapper_Engine.Resources.Implementation
         {
             _userAuthService = userAuthService;
         }
+        public async Task<string> Signup(UserModel obj)
+        {
+            try
+            {
+                return await _userAuthService.UserSignup(obj);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
         public async Task<string> Authorize(UserModel obj)
         {
             try
