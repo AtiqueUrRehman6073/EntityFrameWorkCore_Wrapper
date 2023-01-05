@@ -3,6 +3,7 @@ using EFWrapper_Utilities;
 using EntityFrameWorkCore_Wrapper.Extensions;
 using ERWrapper_Entities.Models;
 using ERWrapper_Repositroy.DemoDateRepo.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,30 +30,30 @@ namespace ERWrapper_Repositroy.DemoDateRepo.Implementation
 			}
 			catch (Exception ex)
 			{
-				return ex.Message;
-				throw;
+                return JsonConvert.SerializeObject(obj.Email = ex.Message, Formatting.Indented);
+                throw;
 			}
 		}
 		public async Task<string> UserAuthorization(UserModel obj)
 		{
 			try
 			{
-				var dbResponse = await _context.UserAuth(obj);
+				var dbResponse = "Empty";//await _context.UserAuth(obj);
                 if (dbResponse != "Empty")
                 {
                     return "Account already Exists! Please try another UserName or Password!";
                 }
                 else
 				{
-					string token = "";
-					token = await _jwtService.GenerateToken(obj.Name, obj.Email);
-					return token;
+					obj.Token = await _jwtService.GenerateToken(obj.Name, obj.Email);
+					obj.Password = "";
+                    return JsonConvert.SerializeObject(obj, Formatting.Indented);
                 }
 			}
 			catch (Exception ex)
 			{
-				return ex.Message;
-				throw;
+                return JsonConvert.SerializeObject(obj.Email = ex.Message, Formatting.Indented);
+                throw;
 			}
 		}
         public async Task<string> UserAuth(UserModel obj)
@@ -63,8 +64,8 @@ namespace ERWrapper_Repositroy.DemoDateRepo.Implementation
 			}
 			catch (Exception ex)
 			{
-				return ex.Message;
-				throw;
+                return JsonConvert.SerializeObject(obj.Email = ex.Message, Formatting.Indented);
+                throw;
 			}
         }
     }

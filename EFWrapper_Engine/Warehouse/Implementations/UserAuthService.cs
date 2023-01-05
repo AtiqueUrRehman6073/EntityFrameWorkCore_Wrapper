@@ -25,7 +25,6 @@ namespace EFWrapper_Engine.Warehouse.Implementations
             {
                 var dbReponse = await _dataAuthRepo.UserSignup(obj);
                 return dbReponse;
-                //return tokenHandler.WriteToken(token);
             }
             catch (Exception ex)
             {
@@ -37,7 +36,7 @@ namespace EFWrapper_Engine.Warehouse.Implementations
         {
             try
             {
-                var dbReponse = await _dataAuthRepo.UserSignup(obj);
+                var dbReponse = await _dataAuthRepo.UserAuthorization(obj);
                 return dbReponse;
                 //return tokenHandler.WriteToken(token);
             }
@@ -51,34 +50,12 @@ namespace EFWrapper_Engine.Warehouse.Implementations
         {
 			try
 			{
-                var mySecret = "asdv234234^&%&^%&^hjsdfb2%%%";
-                var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(mySecret));
-
-                var myIssuer = "http://mysite.com";
-                var myAudience = "http://myaudience.com";
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim(ClaimTypes.Name,obj.Name),
-                        new Claim(ClaimTypes.Email,obj.Email)
-                    }),
-                    Expires = DateTime.UtcNow.AddDays(7),
-                    Issuer = myIssuer,
-                    Audience = myAudience,
-                    SigningCredentials = new SigningCredentials(mySecurityKey, SecurityAlgorithms.HmacSha256Signature)
-                };
-
-                var token = tokenHandler.CreateToken(tokenDescriptor);
                 var dbReponse = await _dataAuthRepo.UserAuth(obj);
                 if(dbReponse == "Empty" || dbReponse == null || dbReponse.IsNullOrEmpty() || dbReponse.Length == 0 || dbReponse.Count() == 0)
                 {
                     return "Account does not Exist! Please Create an Account!";
                 }
                 else return dbReponse;
-                //return tokenHandler.WriteToken(token);
 			}
 			catch (Exception ex)
 			{

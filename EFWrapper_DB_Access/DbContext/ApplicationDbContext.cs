@@ -35,11 +35,13 @@ namespace EFWrapper_Data_Access.DbContext
                     ///// Perform Insertion Here . . . 
                     return JsonConvert.SerializeObject(obj, Formatting.Indented);
                 }
-                return JsonConvert.SerializeObject("UserName or email exists already . . .", Formatting.Indented);   
+                obj = new UserModel();
+                obj.Email = "UserName or email exists already . . .";
+                return JsonConvert.SerializeObject(obj, Formatting.Indented);   
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return JsonConvert.SerializeObject(obj.Email = ex.Message, Formatting.Indented);
                 throw;
             }
         }
@@ -56,7 +58,7 @@ namespace EFWrapper_Data_Access.DbContext
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return JsonConvert.SerializeObject(obj.Email = ex.Message,Formatting.Indented);
                 throw;
             }
         }
