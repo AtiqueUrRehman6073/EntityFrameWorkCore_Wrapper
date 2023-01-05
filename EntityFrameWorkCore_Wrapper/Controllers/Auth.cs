@@ -31,6 +31,7 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         {
             return await _userAuth.Authenticate(obj);
         }
+        [Authorize]
         [HttpGet,Route("CheckAuth")]
         public async Task<string> CheckAuth()
         {

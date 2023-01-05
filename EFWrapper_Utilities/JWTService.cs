@@ -42,7 +42,7 @@ namespace EntityFrameWorkCore_Wrapper.Extensions
                 };
 
                 dynamic token = tokenHandler.CreateToken(tokenDescriptor);
-                return token == null?"No Token Generated":JsonConvert.SerializeObject(token.RawData,Formatting.Indented);
+                return token == null?"No Token Generated":token.RawData;
 			}
 			catch (Exception ex)
 			{

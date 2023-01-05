@@ -11,14 +11,15 @@ namespace EntityFrameWorkCore_Wrapper.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void ConfigureCors(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureCors(this IServiceCollection services)
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.WithOrigins(configuration.GetSection("CorsSettings:AllowUrls").Value.Split(';'))
+                options.AddPolicy(name: "CorsPolicy",
+                    builder => builder.AllowAnyOrigin()//.WithOrigins(configuration.GetSection("CorsSettings:AllowUrls").Value.Split(';'))
                     .AllowAnyMethod()
-                    .AllowAnyHeader());
+                    .AllowAnyHeader()
+                    );
             });
         }
         public static void ConfigureServices(this IServiceCollection services)

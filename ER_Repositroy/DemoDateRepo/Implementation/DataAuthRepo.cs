@@ -38,7 +38,7 @@ namespace ERWrapper_Repositroy.DemoDateRepo.Implementation
 		{
 			try
 			{
-				var dbResponse = "Empty";//await _context.UserAuth(obj);
+				var dbResponse = await _context.UserAuth(obj);
                 if (dbResponse != "Empty")
                 {
                     return "Account already Exists! Please try another UserName or Password!";

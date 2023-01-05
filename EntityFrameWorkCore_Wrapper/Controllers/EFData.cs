@@ -17,7 +17,7 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         {
             _data = data;
         }
-       // [Authorize]
+        [Authorize]
         [HttpGet,Route("GetData")]
         public async Task<string> GetData()
         {
