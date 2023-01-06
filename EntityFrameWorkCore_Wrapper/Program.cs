@@ -79,10 +79,10 @@ builder.Services.ConfigureSettings(builder.Configuration);
 builder.Services.AddApplicationInsightsTelemetry();
 //var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
 
-//// Ensables adaptive sampling.
+//// Enables adaptive sampling.
 //aiOptions.EnableAdaptiveSampling = true;
 
-//// Ensables QuickPulse (Live Metrics stream).
+//// Enables QuickPulse (Live Metrics stream).
 //aiOptions.EnableQuickPulseMetricStream = true;
 //aiOptions.EnablePerformanceCounterCollectionModule = true;
 //aiOptions.EnableRequestTrackingTelemetryModule = true;
