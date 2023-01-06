@@ -1,4 +1,5 @@
 ﻿using EFWrapper_Engine.Resources.Interfaces;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +14,17 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         //==//====> Utilities is shared among all the needed libraries . . .
 
         private readonly IDemoData _data;
-        public EFData(IDemoData data)
+        private TelemetryClient _telemetry;
+        public EFData(IDemoData data, TelemetryClient telemetry)
         {
+            _telemetry = telemetry;
             _data = data;
         }
         [Authorize]
         [HttpGet,Route("GetData")]
         public async Task<string> GetData()
         {
+            _telemetry.TrackEvent("Get All Patient Data");
             return await _data.GetDemoData();
         }
 

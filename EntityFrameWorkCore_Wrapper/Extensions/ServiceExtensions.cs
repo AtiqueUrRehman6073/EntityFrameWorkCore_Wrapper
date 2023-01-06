@@ -35,6 +35,7 @@ namespace EntityFrameWorkCore_Wrapper.Extensions
             services.AddScoped<IDataAuthRepo, DataAuthRepo>();
 
             services.AddScoped<IJWTService, JWTService>();
+            services.AddApplicationInsightsTelemetry();
 
         }
         public static void ConfigureSettings(this IServiceCollection services, IConfiguration configuration)

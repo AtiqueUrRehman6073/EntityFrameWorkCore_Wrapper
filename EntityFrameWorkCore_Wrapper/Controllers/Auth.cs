@@ -1,5 +1,6 @@
 ﻿using EFWrapper_Engine.Resources.Interfaces;
 using ERWrapper_Entities.Models;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,11 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
     public class Auth : ControllerBase
     {
         private readonly IUserAuth _userAuth;
-        public Auth(IUserAuth userAuth)
+        private readonly TelemetryClient _telemetryClient;
+        public Auth(IUserAuth userAuth, TelemetryClient telemetryClient)
         {
             _userAuth = userAuth;
+            _telemetryClient = telemetryClient;
         }
         [HttpPost, Route("signup")]
         public async Task<string> Signup(UserModel obj)
@@ -24,11 +27,13 @@ namespace EntityFrameWorkCore_Wrapper.Controllers
         [HttpPost, Route("authorize")]
         public async Task<string> Authorize(UserModel obj)
         {
+            _telemetryClient.TrackEvent("User Authorization");
             return await _userAuth.Authorize(obj);
         }
         [HttpPost,Route("login")]
         public async Task<string> Login(UserModel obj)
         {
+            _telemetryClient.TrackEvent("User Login/Authentication");
             return await _userAuth.Authenticate(obj);
         }
         [Authorize]

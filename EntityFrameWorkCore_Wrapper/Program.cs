@@ -4,6 +4,8 @@ using EFWrapper_Engine.Resources.Interfaces;
 using EntityFrameWorkCore_Wrapper.Extensions;
 using ERWrapper_Repositroy.DemoDateRepo.Implementation;
 using ERWrapper_Repositroy.DemoDateRepo.Interfaces;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -74,6 +76,25 @@ builder.Services.AddAuthentication(options =>
 builder.Services.ConfigureCors();
 builder.Services.ConfigureServices();
 builder.Services.ConfigureSettings(builder.Configuration);
+builder.Services.AddApplicationInsightsTelemetry();
+//var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+
+//// Ensables adaptive sampling.
+//aiOptions.EnableAdaptiveSampling = true;
+
+//// Ensables QuickPulse (Live Metrics stream).
+//aiOptions.EnableQuickPulseMetricStream = true;
+//aiOptions.EnablePerformanceCounterCollectionModule = true;
+//aiOptions.EnableRequestTrackingTelemetryModule = true;
+//aiOptions.EnableEventCounterCollectionModule = true;
+//aiOptions.EnableDependencyTrackingTelemetryModule = true;
+//aiOptions.EnableAppServicesHeartbeatTelemetryModule = true;
+//aiOptions.RequestCollectionOptions.TrackExceptions = true;
+//aiOptions.EnableDiagnosticsTelemetryModule = true;
+//aiOptions.DeveloperMode = false;
+
+//builder.Services.AddApplicationInsightsTelemetry(aiOptions);
+builder.Services.AddApplicationInsightsTelemetryProcessor<ITelemetryProcessor>();
 var app = builder.Build();
 app.UseCors("CorsPolicy");
 // Configure the HTTP request pipeline.
