@@ -94,7 +94,10 @@ builder.Services.AddApplicationInsightsTelemetry();
 //aiOptions.DeveloperMode = false;
 
 //builder.Services.AddApplicationInsightsTelemetry(aiOptions);
-builder.Services.AddApplicationInsightsTelemetryProcessor<ITelemetryProcessor>();
+//builder.Services.AddApplicationInsightsTelemetryProcessor<ITelemetryProcessor>();
+
+
+
 var app = builder.Build();
 app.UseCors("CorsPolicy");
 // Configure the HTTP request pipeline.

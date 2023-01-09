@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameWorkCore_Wrapper", "EntityFrameWorkCore_Wrapper\EntityFrameWorkCore_Wrapper.csproj", "{150A9568-96EC-490F-9948-69AC7BC278AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameWorkCore_Wrapper", "EntityFrameWorkCore_Wrapper\EntityFrameWorkCore_Wrapper.csproj", "{150A9568-96EC-490F-9948-69AC7BC278AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFWrapper_Engine", "EFWrapper_Engine\EFWrapper_Engine.csproj", "{5E90FDCC-D17E-4796-A65C-649E231C696B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFWrapper_Engine", "EFWrapper_Engine\EFWrapper_Engine.csproj", "{5E90FDCC-D17E-4796-A65C-649E231C696B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFWrapper_Data_Access", "EFWrapper_DB_Access\EFWrapper_Data_Access.csproj", "{8A12458E-EFEA-4B22-B74B-CF8468E87FA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFWrapper_Data_Access", "EFWrapper_DB_Access\EFWrapper_Data_Access.csproj", "{8A12458E-EFEA-4B22-B74B-CF8468E87FA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFWrapper_Utilities", "EFWrapper_Utilities\EFWrapper_Utilities.csproj", "{4AF2776D-FDC4-4999-BD75-60CFB4FDDA1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFWrapper_Utilities", "EFWrapper_Utilities\EFWrapper_Utilities.csproj", "{4AF2776D-FDC4-4999-BD75-60CFB4FDDA1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERWrapper_Repositroy", "ER_Repositroy\ERWrapper_Repositroy.csproj", "{E482AC72-58BB-4747-B796-396A1B09B13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERWrapper_Repositroy", "ER_Repositroy\ERWrapper_Repositroy.csproj", "{E482AC72-58BB-4747-B796-396A1B09B13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERWrapper_Entities", "ERWrapper_Entities\ERWrapper_Entities.csproj", "{EF0D1D26-DF0D-4B70-939A-880030209472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERWrapper_Entities", "ERWrapper_Entities\ERWrapper_Entities.csproj", "{EF0D1D26-DF0D-4B70-939A-880030209472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingEngine", "UnitTestingEngine\UnitTestingEngine.csproj", "{1029BEAC-110B-45D7-9B78-0945E006A1B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{EF0D1D26-DF0D-4B70-939A-880030209472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0D1D26-DF0D-4B70-939A-880030209472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0D1D26-DF0D-4B70-939A-880030209472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1029BEAC-110B-45D7-9B78-0945E006A1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1029BEAC-110B-45D7-9B78-0945E006A1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1029BEAC-110B-45D7-9B78-0945E006A1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1029BEAC-110B-45D7-9B78-0945E006A1B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
