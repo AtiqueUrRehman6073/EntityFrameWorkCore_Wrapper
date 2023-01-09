@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "EFWrapper_Engine": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:63945;http://localhost:63950"
+    }
+  }
+}
